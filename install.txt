@@ -1,0 +1,172 @@
+#requests
+pip3 install requests
+
+#Selenium
+pip3 install Selenium
+
+#ChromeDriver or GeckoDriver
+https://chromedriver.storage.googleapis.com/index.html
+(https://github.com/mozilla/geckodriver/releases)
+sudo mv chromedriver /usr/bin
+vim ~/.profile
+export PATH = "$PATH:/usr/bin/chromedriver"
+(export PATH = "$PATH:/usr/bin/geckodriver")
+
+#cchardet aiodns
+pip3 install cchardet aiodns
+
+#lxml
+pip3 install lxml
+
+#beautifulsoup4
+pip3 install beautifulsoup4
+
+#pyquery
+pip3 install pyquery
+
+#tesserocr pillow
+sudo apt-get install -y tesseract-ocr libtesseract-dev libleptonica-dev
+pip3 install tesserocr pillow
+
+#mysql
+sudo apt-get update
+sudo apt-get install -y mysql-server mysql-client
+
+sudo service mysql start
+sudo service mysql stop
+sudo service mysql restart
+
+user = root
+password = 123456
+
+#mongodb
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+
+echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+
+sudo apt-get update
+
+sudo apt-get install -y mongodb-org
+
+cat /etc/mongod.conf
+
+mongo --port 27017 --dbpath /data/db (change dbpath to the result of cat /etc/mongod.conf)
+
+mongo --port 27017
+
+use admin
+db.createUser({user:'admin',pwd:'08240810',roles:[{role:'root',db:'admin'}]})
+
+
+#redis
+
+sudo apt-get -y install redis-server
+
+# pymysql pymongo redis
+
+pip3 install pymysql
+
+pip3 install pymongo
+
+pip3 install redis
+
+
+#redis-dump
+sudo apt-get install ruby-full
+
+sudo gem install redis-dump
+
+#flask
+pip3 install flask
+
+#tornado
+pip3 install tornado
+
+#charles
+
+#mitmproxy
+pip3 install mitmproxy
+
+#appium
+
+sudo apt-get update
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+
+sudo apt-get install node.js
+
+sudo npm install -g cnpm
+
+sduo cnpm install -g appium@1.8.1
+
+#pyspider
+sudo apt-get install libgnutls28-dev
+pip3 install pycurl
+pip3 install pyspider
+
+#scrapy
+sudo apt-get install build-essential python3-dev libssl-dev libffi-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev
+sudo pip3 install scrapy
+
+#docker
+sudo apt install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+
+#scrapy-splash 
+docker run -p 8050:8050 scrapinghub/splash
+pip3 install scrapy-splash
+pip3 install scrapy-redis
+
+#scrapyd
+pip3 install scrapyd
+sudo mkdir /etc/scrapyd
+sudo vim /etc/scrapyd/scrapyd.conf
+[scrapyd]
+eggs_dir    = eggs
+logs_dir    = logs
+items_dir   =
+jobs_to_keep = 5
+dbs_dir     = dbs
+max_proc    = 0
+max_proc_per_cpu = 4
+finished_to_keep = 100
+poll_interval = 5.0
+bind_address = 127.0.0.1
+http_port   = 6800
+debug       = off
+runner      = scrapyd.runner
+application = scrapyd.app.application
+launcher    = scrapyd.launcher.Launcher
+webroot     = scrapyd.website.Root
+
+[services]
+schedule.json     = scrapyd.webservice.Schedule
+cancel.json       = scrapyd.webservice.Cancel
+addversion.json   = scrapyd.webservice.AddVersion
+listprojects.json = scrapyd.webservice.ListProjects
+listversions.json = scrapyd.webservice.ListVersions
+listspiders.json  = scrapyd.webservice.ListSpiders
+delproject.json   = scrapyd.webservice.DeleteProject
+delversion.json   = scrapyd.webservice.DeleteVersion
+listjobs.json     = scrapyd.webservice.ListJobs
+daemonstatus.json = scrapyd.webservice.DaemonStatus
+
+#scrapyd-client
+pip3 install scrapyd-client
+scrapyd-deploy -h
+pip3 install python-scrapyd-api
+
+#scrapyrt
+pip3 install scrapyrt
+
+#gerapy
+pip3 install gerapy
+
+
+
+
+
+
+
