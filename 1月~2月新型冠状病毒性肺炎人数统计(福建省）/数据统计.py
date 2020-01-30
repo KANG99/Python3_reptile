@@ -72,13 +72,13 @@ def get_date():
 
 def creat_map(value,date_):
     cities = ['福州市', '厦门市', '漳州市', '泉州市', '三明市', '莆田市', '南平市', '龙岩市', '宁德市'] 
-    map = Map(f"至{date_}福建最新新型冠状病毒感染的肺炎确诊病例分布", width=1800, height=500)
+    map = Map(f"至{date_}福建新型冠状病毒感染的肺炎确诊病例分布", width=1500, height=500)
     map.add( "", cities, value, maptype="福建", is_visualmap=True, visual_text_color='#000')
     return map
 
 def creat_line(cities_dict,date_,n=5,):
     num = [str(i) for i in range(1,6)]
-    line = Line(f"至{date_}前{n}次新型冠状病毒感染的肺炎确诊病例播报情况",width=1800, height=450)
+    line = Line(f"前{n}次新型冠状病毒感染的肺炎确诊病例播报情况",width=1500, height=500)
     for key in cities_dict:
         line.add(f"{key}", num, cities_dict[f'{key}'][::-1],is_label_show=True,line_width=2,yaxis_name="人数(个)",xaxis_name='播报顺序(次)')
     return line
