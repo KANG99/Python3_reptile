@@ -6,6 +6,8 @@ from pyecharts import Map,Line,Page,configure
 import webbrowser
 from datetime import date
 import time
+import numpy as np 
+
 
 
 def get_html_text(url):
@@ -72,15 +74,22 @@ def get_date():
 
 def creat_map(value,date_):
     cities = ['福州市', '厦门市', '漳州市', '泉州市', '三明市', '莆田市', '南平市', '龙岩市', '宁德市'] 
-    map = Map(f"至{date_}福建新型冠状病毒感染的肺炎确诊病例分布", width=1500, height=500)
+    map = Map(f"至{date_}福建新型冠状病毒感染的肺炎确诊病例分布", width=1600, height=500)
     map.add( "", cities, value, maptype="福建", is_visualmap=True, visual_text_color='#000')
     return map
 
 def creat_line(cities_dict,date_,n=5,):
     num = [str(i) for i in range(1,6)]
-    line = Line(f"前{n}次新型冠状病毒感染的肺炎确诊病例播报情况",width=1500, height=500)
+    all_nmber = np.array([0]*n)
+    line = Line(f"前{n}次新型冠状病毒感染的肺炎确诊病例播报情况",width=1600, height=500)
     for key in cities_dict:
-        line.add(f"{key}", num, cities_dict[f'{key}'][::-1],is_label_show=True,line_width=2,yaxis_name="人数(个)",xaxis_name='播报顺序(次)')
+        number = cities_dict[f'{key}'][::-1]
+        number = [int(x) for x in number]
+        number = np.array(number)
+        all_nmber += number
+        line.add(f"{key}", num, number,is_label_show=True,line_width=2,yaxis_name="人数(个)",xaxis_name='播报顺序(次)')
+    line.add('总人数',num,all_nmber,is_label_show=True,line_width=2,yaxis_name="人数(个)",xaxis_name='播报顺序(次)')
+    print(f'福建总体型冠状病毒感染的肺炎确诊人数(最新):{all_nmber[-1]}人')
     return line
 
 
