@@ -78,9 +78,12 @@ def creat_map(value,date_):
     map.add( "", cities, value, maptype="福建", is_visualmap=True, visual_text_color='#000')
     return map
 
-def creat_line(cities_dict,date_,n=5,):
-    num = [str(i) for i in range(1,6)]
+def creat_line(cities_dict,date_,n=5):
+
+    num = [str(i) for i in range(1,n+1)]
+    
     all_nmber = np.array([0]*n)
+
     line = Line(f"前{n}次新型冠状病毒感染的肺炎确诊病例播报情况",width=1600, height=500)
     for key in cities_dict:
         number = cities_dict[f'{key}'][::-1]
@@ -116,32 +119,31 @@ if __name__ == "__main__":
             print(content_url)
             data2 = get_html_text(content_url)
             imfos = parse_html_text(data2)
-            if not imfos:
-                continue
-            valid_imfos = get_valid_imfos(imfos)
-            attr,value = get_attr_value(valid_imfos)
-            n = 0
-            for city in attr:
-                city_dict[city] = value[n]
-                n += 1
-            a = city_dict
-            city_list.append(a.copy())
-            t += 1
-            time.sleep(2)
-            if t == 5:
-                break
-    #print(city_list)
-    cities_dict = make_cities_dict(5)
+            if imfos:
+                valid_imfos = get_valid_imfos(imfos)
+                attr,value = get_attr_value(valid_imfos)
+                n = 0
+                for city in attr:
+                    city_dict[city] = value[n]
+                    n += 1
+                a = city_dict
+                city_list.append(a.copy())
+                t += 1
+                time.sleep(2)
+                if t == 5:
+                    break
+    times = len(city_list)
+    cities_dict = make_cities_dict(times)
     today = get_date()
     print(cities_dict)
     all_num = []
     for key in cities_dict:
         all_num.append(cities_dict[f'{key}'][0])
-    line = creat_line(cities_dict,today,5)
+    line = creat_line(cities_dict,today,times)
     #print(all_num)
     page = Page()  
     map_ = creat_map(all_num,today)
     page.add(map_)
     page.add(line)
     page.render()
-    #webbrowser.open(f'病例分布{number}.html')
+    webbrowser.open(f'render.html')
