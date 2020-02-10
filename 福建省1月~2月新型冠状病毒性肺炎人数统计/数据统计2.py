@@ -20,32 +20,31 @@ def get_html_text(url):
     req.raise_for_status()
     req.encoding=req.apparent_encoding
     return req.text
-    
+
 def parse_html_text(item):
     html2 = etree.HTML(data2)
-    imfos = html2.xpath('//div[@class="TRS_Editor"]/p//font[@style="font-size: 14pt"]//text()')
+    imfos = html2.xpath('//div[@class="TRS_Editor"]/p/font[@style="font-size: 14pt"]/text()')
     return imfos
 
 def get_valid_imfos(imfos):
-    start = 0
-    end = 0
-    for index,imfo in enumerate(imfos):
-        if "累计报告新型冠状病毒感染的肺炎确诊病例" in imfo or '累计报告输入性新型冠状病毒感染的肺炎确诊病例' in imfo:
-            start = index
-        elif '现有报告新型冠状病毒感染的肺炎疑似病例' in imfo or '报告输入性新型冠状病毒感染的肺炎疑似病例' in imfo:
-            end = index
-    print(imfos)
-    print(start,end)
-    valid_imfos = imfos[start+1:end]
-    valid_imfos = [v for v in valid_imfos if ''.join(v.split()) !='']
-    #print(valid_imfos)
+   
+    valid_imfos = ''.join([v for v in ''.join(imfos) if v != ' ' and v !='\n' and v !='\xa0' and v !='\u3000']).split('。')
+    # print('--------------------------------------------------------------------------------------------------------------------------')
+    # print()
+    # print('--------------------------------------------------------------------------------------------------------------------------') 
+    #print(valid_imfos[3])
     return valid_imfos
 
 def get_attr_value(valid_imfos):
+
+    imfos_list = valid_imfos.split('；')
+    # print(imfos_list)
+    # print('--------------------------------------------------------------------------------------------------------------------------')
+    # print()
+    # print('--------------------------------------------------------------------------------------------------------------------------')
     attr = []
     value = []
-    for i in valid_imfos:
-        i = ''.join(i.split())
+    for i in imfos_list:
         #print(i)
         city_name = i[:3]
         pattern = re.compile(r'\d+')
@@ -54,9 +53,10 @@ def get_attr_value(valid_imfos):
         #print(city_name,number)
         attr.append(city_name)
         value.append(number)
-    #print(value)
     value  = [int(x) for x in value]
+    #print(attr,value)
     return attr,value
+
 
 def make_cities_dict(n):
     cities = ['福州市', '厦门市', '漳州市', '泉州市', '三明市', '莆田市', '南平市', '龙岩市', '宁德市']
@@ -106,6 +106,7 @@ if __name__ == "__main__":
     data = get_html_text(url)
     html = etree.HTML(data)
     items = html.xpath('//div[@class="xxgksublist"]/a')
+    #print(items)
     t = 0
     cities = ['福州市', '厦门市', '漳州市', '泉州市', '三明市', '莆田市', '南平市', '龙岩市', '宁德市']
     city_list = []
@@ -120,15 +121,21 @@ if __name__ == "__main__":
             print(content_url)
             data2 = get_html_text(content_url)
             imfos = parse_html_text(data2)
+            '''
+            进行修改1
+            '''
+            valid_imfos = get_valid_imfos(imfos)
+            '''
+            进行修改2
+            '''
+            index = 2
             if imfos:
-                valid_imfos = get_valid_imfos(imfos)
-                attr,value = get_attr_value(valid_imfos)
+                attr,value = get_attr_value(valid_imfos[index])
                 n = 0
                 for city in attr:
                     city_dict[city] = value[n]
                     n += 1
-                a = city_dict
-                city_list.append(a.copy())
+                city_list.append(city_dict.copy())
                 t += 1
                 time.sleep(2)
                 if t == 5:
