@@ -22,6 +22,7 @@ Px表示崔庆才爬虫的每一个章节
 - 数据统计2.py只能爬取福建卫健委的第一页的数据
 - 数据统计3.py能够爬取前9页的数据
 
-![image text](https://github.com/KANG99/Python3_reptile/blob/master/%E7%A6%8F%E5%BB%BA%E7%9C%811%E6%9C%88%7E2%E6%9C%88%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E7%97%85%E6%AF%92%E6%80%A7%E8%82%BA%E7%82%8E%E4%BA%BA%E6%95%B0%E7%BB%9F%E8%AE%A1/result.png)
+![image text](https://github.com/KANG99/Python3_reptile/blob/master/%E7%A6%8F%E5%BB%BA%E7%9C%811%E6%9C%88%7E2%E6%9C%88%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E7%97%85%E6%AF%92%E6%80%A7%E8%82%BA%E7%82%8E%E4%BA%BA%E6%95%B0%E7%BB%9F%E8%AE%A1/result_3.png)
 
 ![image text](https://github.com/KANG99/Python3_reptile/blob/master/%E7%A6%8F%E5%BB%BA%E7%9C%811%E6%9C%88%7E2%E6%9C%88%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E7%97%85%E6%AF%92%E6%80%A7%E8%82%BA%E7%82%8E%E4%BA%BA%E6%95%B0%E7%BB%9F%E8%AE%A1/result_2.png)
+
