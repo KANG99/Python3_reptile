@@ -26,7 +26,7 @@ Px表示崔庆才爬虫的每一个章节
 
 ![image text](https://github.com/KANG99/Python3_reptile/blob/master/%E7%A6%8F%E5%BB%BA%E7%9C%811%E6%9C%88%7E2%E6%9C%88%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E7%97%85%E6%AF%92%E6%80%A7%E8%82%BA%E7%82%8E%E4%BA%BA%E6%95%B0%E7%BB%9F%E8%AE%A1/result_2.png)
 
-##深圳市新型冠状性肺炎确诊人数统计
+## 深圳市新型冠状性肺炎确诊人数统计
 主要爬取了深圳市卫生健康委员会每次播报的数据，利用pyecharts 0.5.11 对新型冠状性病毒进行可视化分析：
 
 ![image text](https://github.com/KANG99/Python3_reptile/blob/master/%E6%B7%B1%E5%9C%B3%E5%B8%82%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E6%80%A7%E8%82%BA%E7%82%8E%E7%A1%AE%E8%AF%8A%E4%BA%BA%E6%95%B0%E7%BB%9F%E8%AE%A1/result.png)
